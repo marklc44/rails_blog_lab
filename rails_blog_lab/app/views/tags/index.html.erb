@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2>Tags</h2>
+    <ul class="tag-cloud">
+    <% @tags.each do |tag| %>
+      <li data-size="<%= tag.posts.size %>"><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+    <% end %>
+    </ul>
+  </div>
+</div>

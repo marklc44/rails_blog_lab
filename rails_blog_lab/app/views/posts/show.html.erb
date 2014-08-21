@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2><%= @post.title %></h2>
+    <p class="author">By: <%= @post.author %></p>
+
+    <p><%= @post.description %></p>
+
+    <ul>
+      <% @post.tags.each do |tag| %>
+        <li class="tag"><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+      <% end %>
+    </ul>
+    <a class="btn btn-default" href="/posts/edit/<%= @post.id %>">Edit</a>
+  </div>
+</div>

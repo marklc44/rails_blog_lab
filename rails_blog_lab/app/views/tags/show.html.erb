@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2>Tag Name: <em><%= @tag.name %></em></h2>
+    <ul class="post-list">
+      <% @tag.posts.each do |post| %>
+        <h3><a href="/posts/<%= post.id %>"><%= post.title %></a></h3>
+        <p class="author">By: <%= post.author %></p>
+        <ul class="tag-list">
+        <% post.tags.each do |tag| %>
+          <li class="tag"><%= tag.name %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  </div>
+</div>

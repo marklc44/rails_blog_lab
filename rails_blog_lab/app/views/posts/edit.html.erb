@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h2>Edit Post</h2>
+    <form action="/posts/<%= @post.id %>" method="post">
+      <div class="form-group">
+        <input type="text" name="post[author]" value="<%= @post.author %>">
+      </div>
+      <div class="form-group">
+        <input type="text" name="post[title]" id="title" value="<%= @post.title %>">
+      </div>
+      <div class="form-group">
+        <textarea name="post[description]" id="description" value="<%= @post.description %>"></textarea>
+      </div>
+      <div class="form-group">
+      Tags:
+      <ul class="tag-list">
+        <% @post.tags.each do |tag| %>
+          <li><a class="btn btn-danger" href="#"> X <%= tag.name %></a></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="tagname">Add tags:</label>
+        <input type="text" name="tag[new]" id="tagname" placeholder="Enter a tag name">
+      </div>
+      <input type="hidden" name="post[id]" value="<%= @post.id %>">
+      <input class="btn btn-success" type="submit" value="submit">
+      <%= token_tag form_authenticity_token %>
+      <form action="/posts/<%= @post.id %>" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <input type="hidden" name="post[id]" value="<%= @post.id %>" >
+        <input class="btn btn-danger" type="submit" value="X Delete">
+      </form>
+    </form>
+  </div>
+</div>
