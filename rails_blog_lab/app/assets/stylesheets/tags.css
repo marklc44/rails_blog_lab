@@ -1,0 +1,21 @@
+.tag-cloud {
+
+}
+.tag-list {
+
+}
+.tag-cloud, .tag-list, .post-list {
+  list-style-type: none;
+
+  text-indent: none;
+}
+.post-list li {
+  padding: 1em;
+  background: #ccc;
+  margin: 1em none;
+}
+
+.tag-cloud li {
+  display: inline-block;
+  margin-right: 2em;
+}
