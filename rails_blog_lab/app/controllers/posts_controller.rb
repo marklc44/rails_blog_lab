@@ -37,17 +37,18 @@ class PostsController < ApplicationController
   def update
     post = params[:post].permit(:title, :description, :author, :id)
     tag = params[:tag].permit(:new)
-    binding.pry
-
+    tags = tag[:new].split(',')
+    # binding.pry
 
     to_update = Post.find_by_id(post[:id])
-    # binding.pry
     to_update.update_attributes(title: post[:title], description: post[:description], author: post[:author])
 
+    tags.each do |tag|
+      if(tags.length > 0)
+        new_tag = Tag.find_or_create_by(name: tag)
+        to_update.tags << new_tag
+      end
 
-    if(tag[:new] != '' || tag[:new] != nil)
-      new_tag = Tag.find_or_create_by(name: tag[:new])
-      to_update.tags << new_tag
     end
     redirect_to "/posts/" + params[:id]
   end

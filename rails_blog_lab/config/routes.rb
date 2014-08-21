@@ -17,6 +17,8 @@ RailsBlogLab::Application.routes.draw do
   get '/tags' => 'tags#index'
 
   get 'tags/:id' => 'tags#show'
+
+  delete 'feed' => 'feed#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
