@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   def show
     id = params[:id]
     @post = Post.find_by_id(id)
+    @comments = @post.comments
   end
 
   def edit
@@ -49,7 +50,8 @@ class PostsController < ApplicationController
         to_update.tags << new_tag
       end
     end
-    redirect_to "/posts/" + params[:id]
+    # this isn't working
+    redirect_to '/posts/#{post[:id]}'
   end
 
   def destroy

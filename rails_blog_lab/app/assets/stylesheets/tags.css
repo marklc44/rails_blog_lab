@@ -2,12 +2,18 @@
 
 }
 .tag-list {
-
+  margin: 0;
+  padding: 0;
+  text-indent: none;
 }
 .tag-cloud, .tag-list, .post-list {
   list-style-type: none;
-
   text-indent: none;
+}
+.tag-list li {
+  display: inline-block;
+  margin-right: 1em;
+  padding-left: 1em;
 }
 .post-list li {
   padding: 1em;

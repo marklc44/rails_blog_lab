@@ -1,15 +1,38 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-md-8 col-md-offset-2 post">
+    <div class="post">
     <h2><%= @post.title %></h2>
-    <p class="author">By: <%= @post.author %></p>
+      <p class="author">By: <%= @post.author %></p>
 
-    <p><%= @post.description %></p>
-
-    <ul>
+      <p class="desc"><%= @post.description %></p>
+    </div>
+    <h4>Tags:</h4>
+    <ul class="tag-list">
       <% @post.tags.each do |tag| %>
-        <li class="tag"><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+        <li class="tag"><%= tag.name %></li>
       <% end %>
     </ul>
-    <a class="btn btn-default" href="/posts/edit/<%= @post.id %>">Edit</a>
+    <div class="spacer"></div>
+    <a class="btn btn-default btn-small" href="/posts/edit/<%= @post.id %>">Edit this post</a>
+    <h4>Comments:</h4>
+    <a class="btn btn-default" href="/posts/<%= @post.id %>/comments/new">Add a Comment</a>
+    <div class="spacer"></div>
+    <ul class="comments-list">
+      <% @comments.each do |comment| %>
+        <li>
+          <div class="row">
+            <div class="col-xs-2 text-right comment-meta">
+              <p class="author"><%= comment.author %></p>
+              <p><em><%= comment.updated_at.strftime("%b %d,  %y") %></em>
+            </div>
+            <div class="col-xs-10 body">
+              <p><a href="/posts/<%= @post.id %>/comments/<%= comment.id %>"><%= comment.title %></a></p>
+              <p><%= comment.body  %></p>
+              <p class="text-right"><a href="/posts/<%= @post.id %>/comments/<%= comment.id %>/edit">Edit</a></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

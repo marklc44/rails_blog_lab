@@ -10,6 +10,7 @@
         <h4><%= @comment.title %></h4>
         <p><%= @comment.author %></p>
         <p><%= @comment.body %></p>
+        <p class="text-right"><a href="/posts/<%= @post.id %>/comments/<%= @comment.id %>/edit">Edit</a></p>
       </li>
   </ul>
 </div>

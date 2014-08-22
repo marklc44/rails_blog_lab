@@ -1,0 +1,26 @@
+.post-list li {
+  margin-bottom: 2em;
+  border-radius: 4px;
+}
+.post .author {
+  font-size: .9em;
+  font-style: oblique;
+  color: #666;
+}
+.author {
+  border-bottom: 1px solid #666;
+}
+
+label {
+  display: block;
+}
+footer {
+  height: 50px;
+  width: 100%;
+}
+.post {
+  margin-bottom: 2em;
+}
+.spacer {
+  height: 2em;
+}

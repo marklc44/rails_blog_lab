@@ -1,12 +1,14 @@
-<h2>Even Cooler Blog</h2>
 
 <ul class="post-list">
 <% @posts.each do |post| %>
   <li>
     <h3><a href="/posts/<%= post.id %>"><%= post.title %></a></h3>
+    <p>By: <%= post.author %> | <em><%= post.updated_at.strftime("%b %d,  %y") %></em> | comments: <a href="/posts/<%= post.id %>/comments"><%= post.comments.size %></a></p>
+
+    Tags:
     <ul class="tag-list">
     <% post.tags.each do |tag| %>
-      <li class="tag"><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+      <li class="tag"><%= tag.name %></li>
     <% end %>
     </ul>
   </li>
