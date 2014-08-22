@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+post = Post.find_by_id(16)
+comment = Comment.create(author: "Dippy", title: "Really great", body: "Do you want more traffic to your blog")
+post.comments << comment
+
+comment = Comment.create(author: "Adrianna", title: "This is ok", body: "Do you want more traffic to your blog")
+post.comments << comment
