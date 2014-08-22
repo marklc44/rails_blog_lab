@@ -31,8 +31,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    id = params[:id]
-    @post = Post.find_by_id(id)
+    find_post_by_id
   end
 
   def update
@@ -43,15 +42,13 @@ class PostsController < ApplicationController
     to_update = Post.find_by_id(post[:id])
     to_update.update_attributes(title: post[:title], description: post[:description], author: post[:author])
 
+    to_update.tags.clear
+
     tags.each do |tag_str|
-      if(tags.length > 0)
-        new_tag = Tag.find_or_create_by(name: tag_str)
-        to_update.tags.each do |tag_found|
-        to_update.tags << new_tag
-      end
+      new_tag = Tag.find_or_create_by(name: tag_str)
+      to_update.tags << new_tag
     end
-    # this isn't working
-    redirect_to '/posts/#{post[:id]}'
+    redirect_to to_update
   end
 
   def destroy
@@ -59,8 +56,13 @@ class PostsController < ApplicationController
     to_destroy = Post.find_by_id(post[:id])
     to_destroy.destroy
 
-    redirect_to "/"
+    redirect_to to_destroy
   end
 
+  private
+
+  def find_post_by_id
+    id = params[:id]
+    @post = Post.find_by_id(id)
   end
 end
